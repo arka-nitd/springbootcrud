@@ -1,0 +1,16 @@
+#spring.datasource.url=jdbc:mysql://localhost:3306/demoapp2
+#spring.datasource.username=root
+#spring.datasource.password=sequelpro
+##
+##spring.jpa.show-sql=true
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    password: sequelpro
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: true
+    show-sql: true
