@@ -1,4 +1,4 @@
-package com.helix.practice.demo2.Controller;
+package com.helix.practice.demo2.controller;
 
 
 import org.springframework.dao.EmptyResultDataAccessException;

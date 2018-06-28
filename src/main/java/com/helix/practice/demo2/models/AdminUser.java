@@ -1,8 +1,6 @@
-package com.helix.practice.demo2.Models;
+package com.helix.practice.demo2.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,21 +9,18 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Users {
+public class AdminUser {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @NotNull
-    @Column(unique = true)
     private String username;
 
     @NotNull
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-
-    private String teamName;
 
     public String getUsername() {
         return username;
@@ -46,13 +41,5 @@ public class Users {
     }
 
     public void setId(Long id) { this.id = id; }
-
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
 
 }

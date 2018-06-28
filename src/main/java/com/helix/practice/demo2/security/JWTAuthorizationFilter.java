@@ -1,14 +1,9 @@
-package com.helix.practice.demo2.Security;
+package com.helix.practice.demo2.security;
 
-import com.helix.practice.demo2.Models.Users;
-import com.helix.practice.demo2.Services.UserService;
 import io.jsonwebtoken.Jwts;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -18,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.helix.practice.demo2.Security.SecurityConstants.HEADER_STRING;
-import static com.helix.practice.demo2.Security.SecurityConstants.SECRET;
-import static com.helix.practice.demo2.Security.SecurityConstants.TOKEN_PREFIX;
+import static com.helix.practice.demo2.security.SecurityConstants.HEADER_STRING;
+import static com.helix.practice.demo2.security.SecurityConstants.SECRET;
+import static com.helix.practice.demo2.security.SecurityConstants.TOKEN_PREFIX;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 

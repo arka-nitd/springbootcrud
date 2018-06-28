@@ -1,6 +1,6 @@
-package com.helix.practice.demo2.Security;
+package com.helix.practice.demo2.security;
 
-import com.helix.practice.demo2.Services.UserDetailsServiceImpl;
+import com.helix.practice.demo2.services.AdminDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -9,14 +9,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static com.helix.practice.demo2.Security.SecurityConstants.LOGIN_URL;
-import static com.helix.practice.demo2.Security.SecurityConstants.SIGN_UP_URL;
+import static com.helix.practice.demo2.security.SecurityConstants.LOGIN_URL;
+import static com.helix.practice.demo2.security.SecurityConstants.SIGN_UP_URL;
 
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    private AdminDetailsService userDetailsService;
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
 

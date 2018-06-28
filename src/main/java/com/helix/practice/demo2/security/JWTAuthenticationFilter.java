@@ -1,7 +1,7 @@
-package com.helix.practice.demo2.Security;
+package com.helix.practice.demo2.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.helix.practice.demo2.Models.Users;
+import com.helix.practice.demo2.models.AdminUser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import static com.helix.practice.demo2.Security.SecurityConstants.*;
+import static com.helix.practice.demo2.security.SecurityConstants.*;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -34,7 +34,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             throws AuthenticationException {
 
         try {
-            Users user = new ObjectMapper().readValue(request.getInputStream(), Users.class);
+            AdminUser user = new ObjectMapper().readValue(request.getInputStream(), AdminUser.class);
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                         user.getUsername(),
@@ -59,7 +59,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .setExpiration(new Date(System.currentTimeMillis()+EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
-        response.getWriter().write(token);
+        response.getWriter().write(TOKEN_PREFIX+" "+token);
         response.addHeader(HEADER_STRING, TOKEN_PREFIX+token);
     }
 }

@@ -1,7 +1,7 @@
-package com.helix.practice.demo2.Services;
+package com.helix.practice.demo2.services;
 
-import com.helix.practice.demo2.Models.Users;
-import com.helix.practice.demo2.Repository.UserJPARepository;
+import com.helix.practice.demo2.models.AdminUser;
+import com.helix.practice.demo2.repository.AdminJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 import java.util.Collections;
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class AdminDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserJPARepository userJPARepository;
+    private AdminJpaRepository adminJpaRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Users user = userJPARepository.findByUsername(s);
+        AdminUser user = adminJpaRepository.findByUsername(s);
         if(null == user)
             throw new UsernameNotFoundException(s);
         return new User(user.getUsername(), user.getPassword(), Collections.emptyList());
